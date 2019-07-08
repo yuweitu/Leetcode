@@ -10,20 +10,17 @@ Output: index1=1, index2=2
 
 """
 
-class Solution(object):
-    def twoSum(self, numbers, target):
-        """
-        :type numbers: List[int]
-        :type target: int
-        :rtype: List[int]
-        """
-        left = 0
-        right = len(numbers) - 1
-        while left < right:
-            if numbers[left] + numbers[right] == target:
-                return [left+1, right+1]
-            elif numbers[left] + numbers[right] > target:
-                right -= 1
+class Solution:
+
+	# two pointers, time complexity O(nlogn), space complexity O(1)
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        n = len(numbers)
+        start, end = 0,  n -1
+        while start < end :
+            if numbers[start] + numbers[end] == target:
+                return start + 1, end + 1
+            elif numbers[start] + numbers[end] < target:
+                start += 1
             else:
-                left += 1
+                end -= 1
         return None
